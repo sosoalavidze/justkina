@@ -28,12 +28,12 @@ function validateSeed() {
     if (s.seed == seed) {
       hasMatch = true;
       document.getElementById("result_field").innerHTML = "Congratualtions, you have passed level 2. Please click the button below for your last clue.";
-
+      var parent = document.getElementsByClassName("main-container")[0];
       var btn_nxt = document.createElement("button");
       btn_nxt.innerHTML = "Next puzzle";
       btn_nxt.setAttribute("class", "button_next");
       btn_nxt.setAttribute("onclick", "visitPage();");
-      document.body.appendChild(btn_nxt);
+      parent.appendChild(btn_nxt);
 
       var btn_old = document.getElementsByClassName("button_validate");
       btn_old[0].remove();
