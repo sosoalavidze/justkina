@@ -41,7 +41,6 @@
                     return false;
                 } else if(e.metaKey && e.keyCode === 88) {
                     localStorage.clear();
-                    document.getElementById("noteSpace").innerText = "Notes go here...";
                 }else if(e.metaKey && e.keyCode === 73) {
                     sel = window.getSelection();
                     if (sel.rangeCount && sel.getRangeAt) {
