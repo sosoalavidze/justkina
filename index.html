@@ -44,7 +44,6 @@
                     localStorage.clear();
                     document.getElementById("noteSpace").innerText = "Notes go here...";
                 }else if(e.metaKey && e.keyCode === 73) {
-                    document.getElementById('noteSpace').focus();
                     sel = window.getSelection();
                     if (sel.rangeCount && sel.getRangeAt) {
                         range = sel.getRangeAt(0);
@@ -57,7 +56,6 @@
                     document.execCommand("BackColor", false, "yellow");
                     document.designMode = "off";
                 }else if(e.metaKey && e.keyCode === 74) {
-                    document.getElementById('noteSpace').focus();
                     sel = window.getSelection();
                     if (sel.rangeCount && sel.getRangeAt) {
                         range = sel.getRangeAt(0);
