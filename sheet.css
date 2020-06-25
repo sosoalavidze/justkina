@@ -1,4 +1,28 @@
-body {
+h1 {
+    font-size: 50px;
+    font-weight: 200;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: coral;
+    cursor: default;
+    user-select:none;
+}
+::selection { 
+    background: palevioletred; 
+}
+#noteSpace {
+    font-size: 18px; 
+    resize: none;
+    border: none;
+    height: 500px;
+    width: 98%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgba(243, 242, 242, 0.438);
+}
+#noteSpace:focus{
+    outline: none;
+}
+
+/* body {
 	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
@@ -73,3 +97,4 @@ body {
   margin: 0 auto;
   position: relative;
 }
+ */
