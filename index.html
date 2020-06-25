@@ -27,7 +27,7 @@
         <!-- <button id="cl" onclick="clearSel()">Clear Selection</button> -->
         <script type="text/javascript">
             document.onkeydown = function(e) {
-                if (e.metaKey && e.keyCode === 83 || e.ctrlKey && e.which === 83) {
+                if (e.metaKey && e.keyCode === 83 || e.ctrlKey && e.keyCode === 83) {
                     e.preventDefault();
                     try {
                     if (localStorage) {
@@ -39,10 +39,10 @@
                     alert("Couldn't save notes");
                 }
                     return false;
-                } else if(e.metaKey && e.keyCode === 88 || e.ctrlKey && e.which === 88) {
+                } else if(e.metaKey && e.keyCode === 88 || e.ctrlKey && e.keyCode === 88) {
                     e.preventDefault();
                     localStorage.clear();
-                }else if(e.metaKey && e.keyCode === 73 || e.ctrlKey && e.which === 73) {
+                }else if(e.metaKey && e.keyCode === 73 || e.ctrlKey && e.keyCode === 73) {
                     e.preventDefault();
                     sel = window.getSelection();
                     if (sel.rangeCount && sel.getRangeAt) {
@@ -55,7 +55,7 @@
                     }
                     document.execCommand("BackColor", false, "yellow");
                     document.designMode = "off";
-                }else if(e.metaKey && e.keyCode === 74 || e.ctrlKey && e.which === 74) {
+                }else if(e.metaKey && e.keyCode === 74 || e.ctrlKey && e.keyCode === 74) {
                     e.preventDefault();
                     sel = window.getSelection();
                     if (sel.rangeCount && sel.getRangeAt) {
