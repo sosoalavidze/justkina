@@ -1,4 +1,87 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>My Notepad</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="stylesheet.css">
+        <!-- <script type="text/javascript" src="script.js"></script> -->
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <h1>
+            notes.
+        </h1>
+        <div autofocus id="noteSpace" contentEditable="true">
+            Notes go here...
+          </div>
+        <!-- <button id="ht" onclick="highlight()">Highlight Selection</button> -->
+        <!-- <button id="cl" onclick="clearSel()">Clear Selection</button> -->
+        <script type="text/javascript">
+            document.onkeydown = function(e) {
+                if (e.metaKey && e.keyCode === 83) {
+                    e.preventDefault();
+                    try {
+                    if (localStorage) {
+                        var txtValue = document.getElementById('noteSpace').innerText;
+                        localStorage.setItem("notes", txtValue);
+                    }
+                }
+                catch (err) {
+                    alert("Couldn't save notes");
+                }
+                    return false;
+                } else if(e.metaKey && e.keyCode === 88) {
+                    localStorage.clear();
+                    document.getElementById("noteSpace").innerText = "Notes go here...";
+                }else if(e.metaKey && e.keyCode === 73) {
+                    document.getElementById('noteSpace').focus();
+                    sel = window.getSelection();
+                    if (sel.rangeCount && sel.getRangeAt) {
+                        range = sel.getRangeAt(0);
+                    }
+                    document.designMode = "on";
+                    if (range) {
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+                    }
+                    document.execCommand("BackColor", false, "yellow");
+                    document.designMode = "off";
+                }else if(e.metaKey && e.keyCode === 74) {
+                    document.getElementById('noteSpace').focus();
+                    sel = window.getSelection();
+                    if (sel.rangeCount && sel.getRangeAt) {
+                        range = sel.getRangeAt(0);
+                    }
+                    document.designMode = "on";
+                    if (range) {
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+                    }
+                    document.execCommand("BackColor", false, "white");
+                    document.designMode = "off";
+                }
+            };
+            if (localStorage) {
+                var notes = localStorage.getItem("notes");
+                document.getElementById('noteSpace').innerText = notes;
+               
+            }
+            
+        </script>
+    </body>
+</html>
+
+<!-- <!DOCTYPE html>
 <html>
   <head>
       <title>
@@ -20,3 +103,4 @@
   </body>
 
 </html>
+ -->
