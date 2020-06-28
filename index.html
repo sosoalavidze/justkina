@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
-        <link rel="stylesheet" href="sheet.css">
+        <link rel="stylesheet" href="stylesheet.css">
         <!-- <script type="text/javascript" src="script.js"></script> -->
 
     </head>
@@ -21,6 +21,13 @@
         <h1>
             notes.
         </h1>
+        <div class="help-tip">
+            <p>CMD + s = save notes<br />
+               CMD + i = highlight selection/enter highlight mode<br />
+               CMD + j = clear highlight selection/exit highlight mode<br />
+               CMD + x = clear all saved data<br/>
+               CMD = CTRL for Windows</p>
+        </div>
         <div autofocus id="noteSpace" contentEditable="true">
           </div>
         <!-- <button id="ht" onclick="highlight()">Highlight Selection</button> -->
@@ -31,12 +38,15 @@
                     e.preventDefault();
                     try {
                     if (localStorage) {
-                        var txtValue = document.getElementById('noteSpace').innerText;
+                        var txtValue = document.getElementById('noteSpace').innerHTML;
                         localStorage.setItem("notes", txtValue);
+                        document.getElementById("noteSpace").focus();
                     }
                 }
-                catch (err) {
-                    alert("Couldn't save notes");
+                catch (e) {
+                    if (e == QUOTA_EXCEEDED_ERR) {
+                        alert('Not enough space to save notes! Clear your localsotrage by pressing CMD + x'); 
+                    }
                 }
                     return false;
                 } else if(e.metaKey && e.keyCode === 88 || e.ctrlKey && e.keyCode === 88) {
@@ -55,6 +65,7 @@
                     }
                     document.execCommand("BackColor", false, "yellow");
                     document.designMode = "off";
+                    document.getElementById("noteSpace").focus();
                 }else if(e.metaKey && e.keyCode === 74 || e.ctrlKey && e.keyCode === 74) {
                     e.preventDefault();
                     sel = window.getSelection();
@@ -68,12 +79,13 @@
                     }
                     document.execCommand("BackColor", false, "white");
                     document.designMode = "off";
+                    document.getElementById("noteSpace").focus();
                 }
             };
             if (localStorage) {
                 var notes = localStorage.getItem("notes");
-                document.getElementById('noteSpace').innerText = notes;
-               
+                document.getElementById('noteSpace').innerHTML = notes;
+                document.getElementById("noteSpace").focus();
             }
             
         </script>
